@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sydney Housing Price · Thida An</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="project.css">
+</head>
+<body style="--accent: #FFCB47; --tint: #FFF1C9">
+
+<!-- HEADER -->
+<header>
+  <div class="wrap">
+    <a href="index.html" class="logo">Thida An<span>.</span></a>
+    <a href="index.html#projects" class="btn small">← All projects</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-card">
+      <div class="hero-text">
+        <span class="script">SIT307 Machine Learning · Deakin</span>
+        <h1>Sydney Housing Price</h1>
+        <p class="lead">A quick second opinion for real estate agents: type in a property's details and get an estimated sale price in seconds.</p>
+        <div class="tags">
+          <span class="tag">scikit-learn</span>
+          <span class="tag">Random forest</span>
+          <span class="tag">Streamlit</span>
+          <span class="tag">pandas</span>
+        </div>
+        <div class="buttons">
+          <a href="https://sydney-housing-price-xth7rckooif6tdmgmtsldy.streamlit.app/" target="_blank" class="btn primary">Try the app →</a>
+          <a href="https://github.com/chakriyathida/sydney-housing-price" target="_blank" class="btn">View code on GitHub</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="images/projects/sydney-app-prediction.webp" alt="The Sydney Housing Price Estimator app showing an estimated price">
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY NUMBERS -->
+  <div class="stats">
+    <div class="stat"><div class="num">101</div><div class="label">sold properties I collected by hand</div></div>
+    <div class="stat"><div class="num">3</div><div class="label">suburbs, from entry level to prestige</div></div>
+    <div class="stat"><div class="num">~12%</div><div class="label">typical error on a normal home</div></div>
+  </div>
+
+  <!-- 1. THE QUESTION -->
+  <section class="block">
+    <div class="block-head">
+      <span class="step">01</span>
+      <h2>The question</h2>
+    </div>
+    <div class="block-body">
+      <p>Can one model price homes across three very different Sydney markets?</p>
+      <ul class="points">
+        <li><strong>Mount Druitt</strong>: entry level, first-home buyers and investors</li>
+        <li><strong>Cabramatta</strong>: mid range, families and investors</li>
+        <li><strong>Vaucluse</strong>: harbour-side prestige</li>
+      </ul>
+      <p>The same house can be worth very different amounts depending on where it is, so the model has to learn that.</p>
+    </div>
+  </section>
+
+  <!-- 2. THE DATA -->
+  <section class="block">
+    <div class="block-head">
+      <span class="step">02</span>
+      <h2>The data</h2>
+    </div>
+    <div class="block-body">
+      <p>I opened 101 sold listings on realestate.com.au and domain.com.au and typed each one into a spreadsheet, including the agent's description.</p>
+      <ul class="points">
+        <li>Year built (98%) and building size (83%) were almost never listed, so I left them out.</li>
+        <li>I turned agent descriptions into keyword features, like harbour views, luxury words and "investor" language.</li>
+        <li>Suburb and property type had to be read together. Cabramatta's median looks low only because most of its sales were units.</li>
+      </ul>
+      <figure>
+        <div class="frame"><img src="images/projects/sydney-suburb-boxplot.webp" alt="Box plot of sale price by suburb for houses and strata, and a scatter of bedrooms against price"></div>
+        <figcaption>A typical Vaucluse house sold for about 7 times a typical Mount Druitt house.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 3. METHOD -->
+  <section class="block">
+    <div class="block-head">
+      <span class="step">03</span>
+      <h2>What I did</h2>
+    </div>
+    <div class="block-body">
+      <p>Prices were very skewed, so I predicted <strong>log(price)</strong>. Then I compared three model families with cross-validation.</p>
+      <div class="table-wrap">
+        <table>
+          <tr><th>Model</th><th>Test RMSE (log)</th><th>Average error</th><th>Median error</th></tr>
+          <tr><td>Ridge regression</td><td>0.337</td><td>25.2%</td><td>15.4%</td></tr>
+          <tr class="best"><td>Random forest</td><td>0.303</td><td>19.0%</td><td>12.2%</td></tr>
+          <tr><td>Gradient boosting</td><td>0.306</td><td>19.7%</td><td>12.6%</td></tr>
+        </table>
+      </div>
+      <p>I chose the <strong>random forest</strong>. It had the lowest error and it fails safely. Ridge guessed $18.7M for four apartments that sold together for $6.45M. The forest can't go that far off.</p>
+    </div>
+  </section>
+
+  <!-- 4. FINDINGS -->
+  <section class="block">
+    <div class="block-head">
+      <span class="step">04</span>
+      <h2>What I found</h2>
+    </div>
+    <div class="block-body">
+      <ul class="points">
+        <li>Ordinary homes are easy. Median error was about <strong>8%</strong> in Mount Druitt.</li>
+        <li>Prestige homes are hard. Median error for Vaucluse houses was <strong>38%</strong>.</li>
+        <li>The biggest miss was a $22.41M harbour-view home, predicted at $8.04M. Its value came from views of the Opera House and Bridge, which my features couldn't capture.</li>
+      </ul>
+      <figure>
+        <div class="frame"><img src="images/projects/sydney-error-by-group.webp" alt="Actual vs predicted price for the random forest, with the five largest errors circled"></div>
+        <figcaption>The five largest errors (circled) are almost all top-end Vaucluse homes.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 5. THE APP -->
+  <section class="block">
+    <div class="block-head">
+      <span class="step">05</span>
+      <h2>The app</h2>
+    </div>
+    <div class="block-body">
+      <p>I built the app in Streamlit and hosted it on Streamlit Community Cloud. It shows the estimate along with a clear warning that prestige homes and development sites are harder to predict.</p>
+      <div class="fig-row">
+        <figure>
+          <div class="frame"><img src="images/projects/sydney-app-form.webp" alt="App input form with suburb, property type, rooms and features"></div>
+          <figcaption>Enter the property details</figcaption>
+        </figure>
+        <figure>
+          <div class="frame"><img src="images/projects/sydney-app-prediction.webp" alt="App showing the estimated sale price"></div>
+          <figcaption>Get an estimated sale price</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. WHAT I LEARNED -->
+  <section class="block">
+    <div class="block-head">
+      <span class="step">06</span>
+      <h2>What I learned</h2>
+    </div>
+    <div class="block-body">
+      <ul class="points">
+        <li>Understanding the data mattered more than the model. All three models ended up within about 0.03 log RMSE of each other.</li>
+        <li>One number can hide a lot. Ridge looked fine on log error but was the worst in dollars.</li>
+        <li>The worst predictions taught me the most, including a data-entry mistake of my own.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- NEXT PROJECT -->
+  <a href="agrisense.html" class="next">
+    <div>
+      <span class="script">Next project</span>
+      <h3>AgriSense Cambodia</h3>
+    </div>
+    <span class="btn primary">Read more →</span>
+  </a>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="index.html">← Back to portfolio</a>
+    <span>© 2026 Thida An · Melbourne, Victoria</span>
+  </div>
+</footer>
+
+</body>
+</html>

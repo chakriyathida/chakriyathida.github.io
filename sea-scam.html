@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEA Scam Research Study · Thida An</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="project.css">
+</head>
+<body style="--accent: #F4A3AE; --tint: #FCE8EB">
+
+<!-- HEADER -->
+<header>
+  <div class="wrap">
+    <a href="index.html" class="logo">Thida An<span>.</span></a>
+    <a href="index.html#projects" class="btn small">← All projects</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-card">
+      <div class="hero-text">
+        <span class="script">Self-directed research</span>
+        <h1>A "salary table" that wasn't</h1>
+        <p class="lead">My family got a malware file from a friend's hijacked Telegram account. I traced what it does and who profits, without ever opening it.</p>
+        <div class="tags">
+          <span class="tag">Threat intel</span>
+          <span class="tag">VirusTotal</span>
+          <span class="tag">MITRE ATT&amp;CK</span>
+          <span class="tag">Python figures</span>
+        </div>
+        <div class="buttons">
+          <a href="https://github.com/chakriyathida/sea-scam-malware-study" target="_blank" class="btn primary">Read the full study on GitHub →</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="images/projects/sea-detection.webp" alt="Chart: 31 of 67 antivirus engines flagged the file as malicious">
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY NUMBERS -->
+  <div class="stats">
+    <div class="stat"><div class="num">31 / 67</div><div class="label">security vendors flagged the file</div></div>
+    <div class="stat"><div class="num">14</div><div class="label">attack techniques mapped across 7 tactics</div></div>
+    <div class="stat"><div class="num">0</div><div class="label">times the file was opened</div></div>
+  </div>
+
+  <!-- 1. HOW IT STARTED -->
+  <section class="block">
+    <div class="block-head">
+      <span class="step">01</span>
+      <h2>How it started</h2>
+    </div>
+    <div class="block-body">
+      <p>Someone my family knew sent them a file called "salary table" in Khmer, and later a fake "family emergency" message asking for money. Then that person's account disappeared.</p>
+      <p>Everyone said to delete it. I wanted to know three things: <strong>what is it, what do the attackers want, and how did it come from someone we trust?</strong></p>
+    </div>
+  </section>
+
+  <!-- 2. METHOD -->
+  <section class="block">
+    <div class="block-head">
+      <span class="step">02</span>
+      <h2>How I studied it safely</h2>
+    </div>
+    <div class="block-body">
+      <ul class="points">
+        <li><strong>Never opened it.</strong> Running the file is how it infects.</li>
+        <li>Made a SHA-256 fingerprint and looked it up on <strong>VirusTotal</strong>, which checks it against about 70 antivirus engines and sandboxes.</li>
+        <li>Described its behaviour from sandbox reports and CISA, ACSC and vendor analyses.</li>
+        <li>Mapped each behaviour to <strong>MITRE ATT&amp;CK</strong>, marked as confirmed or inferred.</li>
+        <li>Built the figures in Python so they can be regenerated from the data tables.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3. WHAT IT IS -->
+  <section class="block">
+    <div class="block-head">
+      <span class="step">03</span>
+      <h2>What the file is</h2>
+    </div>
+    <div class="block-body">
+      <p>It was an 8 MB Windows program pretending to be a payroll document. It uses a fake signature to look legitimate, then quietly unpacks a second program with PowerShell and contacts a server the attackers control.</p>
+      <div class="fig-row">
+        <figure>
+          <div class="frame"><img src="images/projects/sea-attack-chain.webp" alt="Six-step attack chain: lure, dropper, staging, payload, call home, cash out"></div>
+          <figcaption>How the attack unfolds, step by step</figcaption>
+        </figure>
+        <figure>
+          <div class="frame"><img src="images/projects/sea-mitre.webp" alt="The file's behaviour mapped to 14 MITRE ATT&amp;CK techniques"></div>
+          <figcaption>Its behaviour mapped to MITRE ATT&amp;CK</figcaption>
+        </figure>
+      </div>
+      <div class="note"><b>Honest limit:</b> scanners gave it a generic label, so I don't name a specific malware family. What it finally steals depends on the second program, so that part is inferred.</div>
+    </div>
+  </section>
+
+  <!-- 4. FOLLOW THE MONEY -->
+  <section class="block">
+    <div class="block-head">
+      <span class="step">04</span>
+      <h2>Follow the money</h2>
+    </div>
+    <div class="block-body">
+      <ul class="points">
+        <li>Malware like this steals passwords, cookies and login sessions, which are sold as "logs" on Telegram from about US$5.</li>
+        <li>The money moves through crypto "guarantee" markets. Huione Guarantee reportedly moved over <strong>US$31B</strong> before the US Treasury (FinCEN) acted against it in May 2025.</li>
+        <li>Shutting one down doesn't end it. Others remain, like Xinbi (over US$24B reported).</li>
+      </ul>
+      <figure>
+        <div class="frame"><img src="images/projects/sea-marketplace-scale.webp" alt="Bar chart: $31B through Huione and $24B through Xinbi"></div>
+        <figcaption>Reported crypto moved through Telegram "guarantee" markets</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 5. WHY IT CAME FROM A FRIEND -->
+  <section class="block">
+    <div class="block-head">
+      <span class="step">05</span>
+      <h2>Why it came from a friend</h2>
+    </div>
+    <div class="block-body">
+      <p>The malware steals the <strong>live login session</strong>, not just the password. With that session, the attacker is logged in as the victim and no 2-factor code is asked for.</p>
+      <p>They message the victim's contacts with more malware and fake "urgent, need money" requests. Then the account is banned or deleted. The file and the emergency message my family got were part of the same cycle.</p>
+      <figure>
+        <div class="frame"><img src="images/projects/sea-account-takeover.webp" alt="The hijacked-account cycle: steal the session, become the victim, spend the trust, burn the account"></div>
+        <figcaption>The hijacked-account cycle</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 6. WHAT I LEARNED -->
+  <section class="block">
+    <div class="block-head">
+      <span class="step">06</span>
+      <h2>What I learned</h2>
+    </div>
+    <div class="block-body">
+      <ul class="points">
+        <li>You can learn a lot about a dangerous file without touching it.</li>
+        <li>Keeping "confirmed" and "inferred" apart made the findings much more trustworthy.</li>
+        <li>Reported numbers are a floor. The real totals are higher.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- NEXT PROJECT -->
+  <a href="sydney-housing.html" class="next">
+    <div>
+      <span class="script">Next project</span>
+      <h3>Sydney Housing Price</h3>
+    </div>
+    <span class="btn primary">Read more →</span>
+  </a>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="index.html">← Back to portfolio</a>
+    <span>© 2026 Thida An · Melbourne, Victoria</span>
+  </div>
+</footer>
+
+</body>
+</html>

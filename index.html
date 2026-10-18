@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thida An, Data Science, Melbourne</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FAF6EF}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+a{color:#2F5FD0;text-decoration:none}a:hover{color:#223047}
+.dots{background-image:radial-gradient(rgba(255,255,255,0.22) 1.6px,transparent 1.8px);background-size:22px 22px}
+.inkdots{background-image:radial-gradient(rgba(34,48,71,0.10) 1.4px,transparent 1.6px);background-size:20px 20px}
+.wob{animation:wob 7s ease-in-out infinite}
+.bob{animation:bob 4.5s ease-in-out infinite}
+.bob2{animation:bob 5.5s ease-in-out -2s infinite}
+.spin{animation:spin 16s linear infinite}
+.twinkle{animation:twinkle 2.8s ease-in-out infinite}
+.twinkle2{animation:twinkle 3.6s ease-in-out -1.2s infinite}
+.marq{animation:marq 34s linear infinite}
+.lift{transition:transform .28s cubic-bezier(.3,1.7,.5,1),box-shadow .28s ease}
+.lift:hover{transform:rotate(0deg) translateY(-8px)!important;box-shadow:10px 14px 0 #223047!important}
+.pop{transition:transform .2s cubic-bezier(.3,1.7,.5,1),box-shadow .2s ease}
+.pop:hover{transform:translate(-2px,-3px);box-shadow:6px 7px 0 #223047!important}
+.chip{transition:transform .2s cubic-bezier(.3,1.7,.5,1)}
+.chip:hover{transform:translateY(-3px) rotate(-3deg)}
+.navlink:hover{color:#2F5FD0!important}
+@keyframes wob{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes twinkle{0%,100%{transform:scale(1) rotate(0deg);opacity:1}50%{transform:scale(.6) rotate(45deg);opacity:.6}}
+@keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.wob,.bob,.bob2,.spin,.twinkle,.twinkle2,.marq{animation:none}}
+/* Menu: full nav on wide screens, hamburger button on phones */
+.nav-toggle{display:none!important}
+.nav-mobile{display:none!important}
+@media (max-width:859px){
+  .nav-desktop{display:none!important}
+  .nav-toggle{display:flex!important}
+  .nav-mobile.open{display:flex!important}
+}
+</style>
+</head>
+<body>
+
+<div style="min-height: 100vh; background: #FAF6EF; color: #223047; font-family: 'Poppins', Helvetica, sans-serif; overflow-x: hidden">
+
+  <!-- NAV -->
+  <header style="position: sticky; top: 0; z-index: 50; background: rgba(250,246,239,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 2px solid #223047">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 12px clamp(16px,5vw,48px); display: flex; align-items: center; justify-content: space-between; gap: 20px">
+      <a href="#top" style="color: #223047; font-weight: 800; font-size: 24px; letter-spacing: -0.02em; padding: 6px 0">Thida An<span style="color: #2F5FD0">.</span></a>
+      
+        <nav class="nav-desktop" style="display: flex; align-items: center; gap: 26px; font-size: 15px; font-weight: 600">
+          <a href="#about" class="navlink" style="color: #223047">About</a>
+          <a href="#projects" class="navlink" style="color: #223047">Projects</a>
+          <a href="#experience" class="navlink" style="color: #223047">Experience</a>
+          <a href="#contact" class="pop" style="background: #FFCB47; color: #223047; font-weight: 700; padding: 9px 20px; border-radius: 999px; border: 2px solid #223047; box-shadow: 3px 3px 0 #223047">Say hi</a>
+        </nav>
+      
+        <button class="nav-toggle" onclick="toggleMenu()" aria-label="Menu" style="width: 46px; height: 46px; border: 2px solid #223047; background: #FFFDF8; border-radius: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; cursor: pointer; box-shadow: 3px 3px 0 #223047">
+          <span style="width: 18px; height: 2px; background: #223047; border-radius: 2px"></span>
+          <span style="width: 18px; height: 2px; background: #223047; border-radius: 2px"></span>
+          <span style="width: 18px; height: 2px; background: #223047; border-radius: 2px"></span>
+        </button>
+      
+    </div>
+    
+      <nav id="mobileMenu" class="nav-mobile" style="display: flex; flex-direction: column; padding: 6px clamp(16px,5vw,48px) 18px; border-top: 1px solid rgba(34,48,71,0.12)">
+        <a href="#about" onclick="closeMenu()" style="color: #223047; font-size: 17px; font-weight: 600; padding: 12px 0">About</a>
+        <a href="#projects" onclick="closeMenu()" style="color: #223047; font-size: 17px; font-weight: 600; padding: 12px 0">Projects</a>
+        <a href="#experience" onclick="closeMenu()" style="color: #223047; font-size: 17px; font-weight: 600; padding: 12px 0">Experience</a>
+        <a href="#contact" onclick="closeMenu()" style="align-self: flex-start; margin-top: 8px; background: #FFCB47; color: #223047; font-size: 15px; font-weight: 700; padding: 10px 22px; border-radius: 999px; border: 2px solid #223047">Say hi</a>
+      </nav>
+    
+  </header>
+
+  <main style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(16px,5vw,48px)">
+
+    <!-- HERO -->
+    <section id="top" data-screen-label="Hero" style="padding: clamp(28px,5vw,56px) 0 clamp(40px,6vw,64px)">
+      <div class="dots" style="position: relative; background-color: #2F5FD0; border: 2px solid #223047; border-radius: 36px; box-shadow: 8px 8px 0 #223047; padding: clamp(32px,6vw,72px) clamp(22px,5vw,64px); display: flex; flex-wrap: wrap-reverse; align-items: center; justify-content: space-between; gap: 40px; overflow: hidden">
+
+        <div style="flex: 1 1 400px; min-width: 0; display: flex; flex-direction: column; gap: 22px; align-items: flex-start; position: relative; z-index: 2">
+          <span style="font-family: 'Caveat', cursive; font-size: clamp(30px,3.6vw,40px); font-weight: 700; color: #FFCB47; transform: rotate(-4deg); line-height: 1">Hi there, I'm</span>
+          <h1 style="margin: 0; font-size: clamp(54px,9vw,112px); font-weight: 800; line-height: 0.95; letter-spacing: -0.04em; color: #FFFDF8">Thida An<span style="color: #FFCB47">.</span></h1>
+          
+            <p style="margin: 0; font-size: clamp(19px,2.3vw,24px); font-weight: 500; line-height: 1.45; max-width: 30ch; color: #FFFDF8">Trained in data. Driven by <span style="position: relative; white-space: nowrap; font-weight: 700">people<svg aria-hidden="true" viewBox="0 0 200 20" preserveAspectRatio="none" style="position: absolute; left: -4px; right: -4px; bottom: -10px; width: calc(100% + 8px); height: 14px"><path d="M3 13 C 30 3, 52 3, 74 11 S 116 20, 138 10 S 176 3, 197 11" stroke="#FFCB47" stroke-width="6" fill="none" stroke-linecap="round"></path></svg></span>.</p>
+
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px">
+            <a href="#projects" class="pop" style="background: #FFCB47; color: #223047; font-weight: 700; font-size: 15px; padding: 14px 26px; border-radius: 999px; border: 2px solid #223047; box-shadow: 4px 4px 0 #223047">See my projects ↓</a>
+            <a href="Thida-An-Resume.pdf" target="_blank" class="pop" style="background: #FFFDF8; color: #223047; font-weight: 700; font-size: 15px; padding: 14px 26px; border-radius: 999px; border: 2px solid #223047; box-shadow: 4px 4px 0 #223047">Resume</a>
+          </div>
+          <div style="display: flex; gap: 10px; margin-top: 4px">
+            <a href="https://github.com/chakriyathida" target="_blank" aria-label="GitHub" class="pop" style="width: 46px; height: 46px; border-radius: 50%; background: #FFFDF8; border: 2px solid #223047; display: flex; align-items: center; justify-content: center; color: #223047">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2.04c-3.34.72-4.04-1.61-4.04-1.61-.55-1.4-1.34-1.77-1.34-1.77-1.08-.74.09-.73.09-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.21.7.82.57A12 12 0 0 0 12 .3"></path></svg>
+            </a>
+            <a href="https://linkedin.com/in/thidaan" target="_blank" aria-label="LinkedIn" class="pop" style="width: 46px; height: 46px; border-radius: 50%; background: #FFFDF8; border: 2px solid #223047; display: flex; align-items: center; justify-content: center; color: #223047">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"></path></svg>
+            </a>
+            <a href="mailto:chakriyathida@gmail.com" aria-label="Email" class="pop" style="width: 46px; height: 46px; border-radius: 50%; background: #FFFDF8; border: 2px solid #223047; display: flex; align-items: center; justify-content: center; color: #223047">
+              <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>
+            </a>
+          </div>
+        </div>
+        
+          <div style="flex: 0 1 380px; width: 100%; max-width: 380px; margin: 0 auto; position: relative; padding: 22px 22px 22px 8px">
+            <div style="position: absolute; top: 10px; left: 0; right: 34px; bottom: 34px; background: #FFCB47; border: 2px solid #223047; border-radius: 32px; transform: rotate(-4deg)"></div>
+            <img src="images/thida-photo.webp" alt="Portrait of Thida An, smiling, in a green t-shirt" style="position: relative; display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: #FFFDF8; border: 2px solid #223047; border-radius: 28px; box-shadow: 6px 6px 0 #223047">
+            <div class="spin" style="position: absolute; top: -10px; right: -18px; width: 128px; height: 128px">
+              <svg role="img" aria-label="Open to work, freelance and volunteering" viewBox="0 0 128 128" width="128" height="128">
+                <defs><path id="badgeCircle" d="M64,64 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"></path></defs>
+                <circle cx="64" cy="64" r="62" fill="#F4A3AE" stroke="#223047" stroke-width="2"></circle>
+                <text font-family="Poppins, sans-serif" font-size="9.5" font-weight="700" fill="#223047"><textPath href="#badgeCircle" textLength="284" lengthAdjust="spacing">OPEN TO WORK ✦ FREELANCE ✦ VOLUNTEERING ✦ </textPath></text>
+                <path d="M64 46 C65.5 58 70 62.5 82 64 C70 65.5 65.5 70 64 82 C62.5 70 58 65.5 46 64 C58 62.5 62.5 58 64 46Z" fill="#FFFDF8" stroke="#223047" stroke-width="2"></path>
+              </svg>
+            </div>
+            <span class="bob2" style="position: absolute; left: -8%; top: 14%; background: #CFDAB4; color: #223047; font-weight: 700; font-size: 14px; padding: 8px 14px; border-radius: 999px; border: 2px solid #223047; box-shadow: 3px 3px 0 #223047; transform: rotate(-6deg); white-space: nowrap">Data science @ Deakin</span>
+            <span class="bob" style="position: absolute; right: -4%; bottom: 6%; background: #FFFDF8; color: #223047; font-weight: 700; font-size: 14px; padding: 8px 14px; border-radius: 999px; border: 2px solid #223047; box-shadow: 3px 3px 0 #223047; transform: rotate(4deg); white-space: nowrap">Melbourne · or remote</span>
+          </div>
+
+        <svg class="twinkle2" aria-hidden="true" viewBox="0 0 24 24" style="position: absolute; left: 46%; top: 9%; width: 26px; height: 26px"><path d="M12 0 C13 8 16 11 24 12 C16 13 13 16 12 24 C11 16 8 13 0 12 C8 11 11 8 12 0Z" fill="#FFCB47"></path></svg>
+        <svg class="twinkle" aria-hidden="true" viewBox="0 0 24 24" style="position: absolute; left: 6%; bottom: 7%; width: 18px; height: 18px"><path d="M12 0 C13 8 16 11 24 12 C16 13 13 16 12 24 C11 16 8 13 0 12 C8 11 11 8 12 0Z" fill="#F4A3AE"></path></svg>
+      </div>
+    </section>
+  </main>
+
+  <!-- MARQUEE -->
+  <div aria-hidden="true" style="margin: 8px -20px 0; background: #FFCB47; border-top: 2px solid #223047; border-bottom: 2px solid #223047; transform: rotate(-1.5deg); overflow: hidden; padding: 14px 0">
+    <div class="marq" style="display: flex; width: max-content; gap: 0">
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">Python<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">pandas<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">scikit-learn<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">Streamlit<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">Feature engineering<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">Data wrangling<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">Random forests<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">EDA<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">Git<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">Jenkins<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">Khmer<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">English<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">Mandarin<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">Python<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">pandas<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">scikit-learn<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">Streamlit<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">Feature engineering<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">Data wrangling<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">Random forests<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">EDA<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">Git<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">Jenkins<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">Khmer<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">English<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+        <span style="display: flex; align-items: center; gap: 22px; padding-right: 22px; font-weight: 700; font-size: 18px; color: #223047; white-space: nowrap">Mandarin<span style="color: #2F5FD0; font-size: 16px">✦</span></span>
+      
+    </div>
+  </div>
+
+  <main style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(16px,5vw,48px)">
+
+    <!-- ABOUT -->
+    <section id="about" data-screen-label="About" style="padding: clamp(64px,9vw,112px) 0 clamp(48px,7vw,80px); display: flex; flex-direction: column; gap: 40px">
+      <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start">
+        <div style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 18px; align-items: flex-start">
+          <span style="font-family: 'Caveat', cursive; font-size: 26px; font-weight: 700; background: #F4A3AE; color: #223047; padding: 2px 16px; border-radius: 10px; border: 2px solid #223047; transform: rotate(-3deg)">About me</span>
+          <h2 style="margin: 0; font-size: clamp(34px,4.6vw,52px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05">A bit about me</h2>
+          <p style="margin: 0; max-width: 56ch; font-size: 18px; line-height: 1.75; color: #34435C">I am a Bachelor of Data Science student at Deakin University in Melbourne, with five years of youth and community work behind me. I build data tools for people, not just for dashboards. I am looking for internships and graduate roles where the work touches education, health, or sustainability.</p>
+        </div>
+        <div style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+          <div class="chip" style="background: #CFDAB4; border: 2px solid #223047; border-radius: 22px; padding: 18px 22px; box-shadow: 4px 4px 0 #223047; transform: rotate(-1.5deg); display: flex; align-items: center; gap: 18px">
+            <div style="flex: 0 0 110px; font-size: 36px; font-weight: 800; letter-spacing: -0.03em">1,000+</div>
+            <div style="font-size: 15px; font-weight: 600; line-height: 1.45">young people engaged through workshops I facilitated</div>
+          </div>
+          <div class="chip" style="background: #FFCB47; border: 2px solid #223047; border-radius: 22px; padding: 18px 22px; box-shadow: 4px 4px 0 #223047; transform: rotate(1deg); display: flex; align-items: center; gap: 18px">
+            <div style="flex: 0 0 110px; font-size: 36px; font-weight: 800; letter-spacing: -0.03em">~150</div>
+            <div style="font-size: 15px; font-weight: 600; line-height: 1.45">children and teens mentored in STEM (maths and coding) and literacy</div>
+          </div>
+          <div class="chip" style="background: #F4A3AE; border: 2px solid #223047; border-radius: 22px; padding: 18px 22px; box-shadow: 4px 4px 0 #223047; transform: rotate(-1deg); display: flex; align-items: center; gap: 18px">
+            <div style="flex: 0 0 110px; font-size: 36px; font-weight: 800; letter-spacing: -0.03em">~30</div>
+            <div style="font-size: 15px; font-weight: 600; line-height: 1.45">events delivered for university students in Melbourne, across college and university clubs</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 18px">
+        <div style="display: flex; align-items: center; gap: 14px">
+          <h3 style="margin: 0; font-size: 22px; font-weight: 800; white-space: nowrap">Skills</h3>
+          <div style="flex: 1; height: 2px; background: #223047; opacity: 0.15"></div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 18px">
+          
+            <div style="background: #FFFDF8; border: 2px solid #223047; border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 12px; box-shadow: 4px 4px 0 #223047">
+              <div style="display: flex; align-items: center; gap: 10px">
+                <span style="width: 14px; height: 14px; border-radius: 50%; border: 2px solid #223047; background: #2F5FD0"></span>
+                <h4 style="margin: 0; font-size: 15px; font-weight: 700">Programming &amp; Databases</h4>
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px">
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #E3EAFB; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">Python</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #E3EAFB; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">SQL</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #E3EAFB; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">MongoDB</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #E3EAFB; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">JavaScript</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #E3EAFB; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">Java</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #E3EAFB; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">C</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #E3EAFB; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">C++</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #E3EAFB; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">C#</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #E3EAFB; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">HTML</span>
+                
+              </div>
+            </div>
+          
+            <div style="background: #FFFDF8; border: 2px solid #223047; border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 12px; box-shadow: 4px 4px 0 #223047">
+              <div style="display: flex; align-items: center; gap: 10px">
+                <span style="width: 14px; height: 14px; border-radius: 50%; border: 2px solid #223047; background: #CFDAB4"></span>
+                <h4 style="margin: 0; font-size: 15px; font-weight: 700">ML &amp; Data Science</h4>
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px">
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #EEF2E3; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">pandas</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #EEF2E3; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">scikit-learn</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #EEF2E3; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">Random Forest</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #EEF2E3; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">Feature engineering</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #EEF2E3; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">Data wrangling</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #EEF2E3; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">EDA</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #EEF2E3; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">Statistical analysis</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #EEF2E3; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">Time series</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #EEF2E3; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">Text processing</span>
+                
+              </div>
+            </div>
+          
+            <div style="background: #FFFDF8; border: 2px solid #223047; border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 12px; box-shadow: 4px 4px 0 #223047">
+              <div style="display: flex; align-items: center; gap: 10px">
+                <span style="width: 14px; height: 14px; border-radius: 50%; border: 2px solid #223047; background: #FFCB47"></span>
+                <h4 style="margin: 0; font-size: 15px; font-weight: 700">Visualisation &amp; BI</h4>
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px">
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #FFF1C9; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">Tableau</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #FFF1C9; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">Power BI</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #FFF1C9; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">Excel</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #FFF1C9; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">matplotlib</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #FFF1C9; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">Streamlit</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #FFF1C9; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">Data visualisation</span>
+                
+              </div>
+            </div>
+          
+            <div style="background: #FFFDF8; border: 2px solid #223047; border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 12px; box-shadow: 4px 4px 0 #223047">
+              <div style="display: flex; align-items: center; gap: 10px">
+                <span style="width: 14px; height: 14px; border-radius: 50%; border: 2px solid #223047; background: #F4A3AE"></span>
+                <h4 style="margin: 0; font-size: 15px; font-weight: 700">Tools</h4>
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px">
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #FCE8EB; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">Git</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #FCE8EB; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">Jenkins</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #FCE8EB; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">CI/CD</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #FCE8EB; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">DevSecOps tooling</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #FCE8EB; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">Wireshark</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #FCE8EB; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">Cisco Packet Tracer</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #FCE8EB; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">Lovable</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #FCE8EB; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">Trello</span>
+                
+              </div>
+            </div>
+          
+            <div style="background: #FFFDF8; border: 2px solid #223047; border-radius: 22px; padding: 20px; display: flex; flex-direction: column; gap: 12px; box-shadow: 4px 4px 0 #223047">
+              <div style="display: flex; align-items: center; gap: 10px">
+                <span style="width: 14px; height: 14px; border-radius: 50%; border: 2px solid #223047; background: #F6B48F"></span>
+                <h4 style="margin: 0; font-size: 15px; font-weight: 700">Spoken languages</h4>
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px">
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #FDEBDF; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">Khmer</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #FDEBDF; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">English</span>
+                
+                  <span class="chip" style="font-size: 13px; font-weight: 600; background: #FDEBDF; color: #223047; padding: 6px 12px; border-radius: 999px; border: 1.5px solid rgba(34,48,71,0.25)">Mandarin</span>
+                
+              </div>
+            </div>
+          
+        </div>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 32px">
+        <div style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 6px">
+            <h3 style="margin: 0; font-size: 22px; font-weight: 800; white-space: nowrap">Education</h3>
+            <div style="flex: 1; height: 2px; background: #223047; opacity: 0.15"></div>
+          </div>
+          
+            <div style="display: flex; flex-wrap: wrap; gap: 4px 24px; padding: 14px 0; border-bottom: 1.5px dashed rgba(34,48,71,0.2)">
+              <div style="flex: 0 0 170px; font-size: 14px; font-weight: 600; color: #2F5FD0; padding-top: 2px">06/2024 – 07/2027 (expected)</div>
+              <div style="flex: 1 1 240px; display: flex; flex-direction: column; gap: 2px; min-width: 0">
+                <div style="font-size: 16px; font-weight: 700">Bachelor of Data Science</div>
+                <div style="font-size: 14px; font-weight: 500; color: #5A6780">Deakin University, Burwood</div>
+              </div>
+            </div>
+          
+            <div style="display: flex; flex-wrap: wrap; gap: 4px 24px; padding: 14px 0; border-bottom: 1.5px dashed rgba(34,48,71,0.2)">
+              <div style="flex: 0 0 170px; font-size: 14px; font-weight: 600; color: #2F5FD0; padding-top: 2px">06/2024 – 06/2026</div>
+              <div style="flex: 1 1 240px; display: flex; flex-direction: column; gap: 2px; min-width: 0">
+                <div style="font-size: 16px; font-weight: 700">Diploma of Information Technology</div>
+                <div style="font-size: 14px; font-weight: 500; color: #5A6780">Deakin College</div>
+              </div>
+            </div>
+          
+        </div>
+        <div style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 6px">
+          <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 6px">
+            <h3 style="margin: 0; font-size: 22px; font-weight: 800; white-space: nowrap">Certifications</h3>
+            <div style="flex: 1; height: 2px; background: #223047; opacity: 0.15"></div>
+          </div>
+          
+            <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; padding: 13px 0; border-bottom: 1.5px dashed rgba(34,48,71,0.2)">
+              <div style="font-size: 15px; min-width: 0"><span style="font-weight: 700">Deakin SME Skills for Education, Employment and Digitals (SEED) AI Training</span><span style="color: #5A6780"> · Deakin University · 02/2026</span></div>
+              <a href="SEED-AI-CERTIFICATE.pdf" target="_blank" style="font-size: 13px; font-weight: 700; color: #2F5FD0">View credential →</a>
+            </div>
+          
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" data-screen-label="Projects" style="padding: clamp(48px,7vw,88px) 0; display: flex; flex-direction: column; gap: 44px">
+      <div style="display: flex; flex-direction: column; gap: 14px; align-items: center; text-align: center">
+        <span style="font-family: 'Caveat', cursive; font-size: 26px; font-weight: 700; background: #FFCB47; color: #223047; padding: 2px 16px; border-radius: 10px; border: 2px solid #223047; transform: rotate(2deg)">Selected work</span>
+        <h2 style="margin: 0; font-size: clamp(34px,4.6vw,52px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05">Featured projects</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: 32px">
+
+        <!-- AgriSense card -->
+        <a href="agrisense.html" class="lift" style="display: flex; flex-direction: column; background: #FFFDF8; border: 2px solid #223047; border-radius: 26px; overflow: hidden; box-shadow: 6px 6px 0 #223047; color: #223047">
+          <div class="inkdots" style="height: 230px; background-color: #CFDAB4; border-bottom: 2px solid #223047; display: flex; align-items: flex-start; justify-content: center; padding-top: 24px; position: relative; overflow: hidden">
+            <img src="images/agrisense.webp" alt="AgriSense prototype: a soil sensor alert in Khmer and English" style="height: 330px; width: auto; flex-shrink: 0; display: block">
+            <span style="position: absolute; top: 14px; left: 14px; font-size: 12px; font-weight: 700; color: #223047; background: #CFDAB4; border: 1.5px solid #223047; padding: 4px 10px; border-radius: 999px">Design thinking · SIT223</span>
+          </div>
+          <div style="padding: 24px; display: flex; flex-direction: column; gap: 12px; flex: 1">
+            <h3 style="margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.01em">AgriSense Cambodia</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #34435C">A voice-first concept that turns farm sensor data into spoken advice in Khmer, for farmers who can't use a dashboard.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px">
+              <span style="font-size: 12px; font-weight: 600; background: #EEF2E3; padding: 4px 10px; border-radius: 999px">IoT</span>
+              <span style="font-size: 12px; font-weight: 600; background: #EEF2E3; padding: 4px 10px; border-radius: 999px">Design thinking</span>
+              <span style="font-size: 12px; font-weight: 600; background: #EEF2E3; padding: 4px 10px; border-radius: 999px">React prototype</span>
+            </div>
+            <span style="margin-top: auto; padding-top: 8px; font-size: 15px; font-weight: 700; color: #2F5FD0">Read More →</span>
+          </div>
+        </a>
+
+        <!-- SEA Scam card -->
+        <a href="sea-scam.html" class="lift" style="display: flex; flex-direction: column; background: #FFFDF8; border: 2px solid #223047; border-radius: 26px; overflow: hidden; box-shadow: 6px 6px 0 #223047; color: #223047">
+          <div style="height: 230px; background: #FFFFFF; border-bottom: 2px solid #223047; position: relative; overflow: hidden">
+            <img src="images/seascam-chart.webp" alt="Chart: 31 of 67 antivirus engines flagged the file as malicious" style="width: 100%; height: 100%; object-fit: cover; object-position: left center; display: block">
+            <span style="position: absolute; top: 14px; right: 14px; font-size: 12px; font-weight: 700; background: #F4A3AE; border: 1.5px solid #223047; padding: 4px 10px; border-radius: 999px">Self-directed research</span>
+          </div>
+          <div style="padding: 24px; display: flex; flex-direction: column; gap: 12px; flex: 1">
+            <h3 style="margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.01em">SEA Scam Research Study</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #34435C">My family got a malware file from a friend's hijacked Telegram account. I traced what it does and who profits, without ever opening it.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px">
+              <span style="font-size: 12px; font-weight: 600; background: #FCE8EB; padding: 4px 10px; border-radius: 999px">Threat intel</span>
+              <span style="font-size: 12px; font-weight: 600; background: #FCE8EB; padding: 4px 10px; border-radius: 999px">MITRE ATT&amp;CK</span>
+              <span style="font-size: 12px; font-weight: 600; background: #FCE8EB; padding: 4px 10px; border-radius: 999px">Python figures</span>
+            </div>
+            <span style="margin-top: auto; padding-top: 8px; font-size: 15px; font-weight: 700; color: #2F5FD0">Read More →</span>
+          </div>
+        </a>
+
+        <!-- Sydney Housing card -->
+        <a href="sydney-housing.html" class="lift" style="display: flex; flex-direction: column; background: #FFFDF8; border: 2px solid #223047; border-radius: 26px; overflow: hidden; box-shadow: 6px 6px 0 #223047; color: #223047">
+          <div style="height: 230px; background: #FFFFFF; border-bottom: 2px solid #223047; position: relative; overflow: hidden">
+            <img src="images/sydney-housing.webp" alt="The Sydney Housing Price Estimator app" style="width: 100%; height: 100%; object-fit: cover; object-position: center 8%; display: block">
+            <span style="position: absolute; top: 14px; right: 14px; font-size: 12px; font-weight: 700; background: #223047; color: #FFFDF8; padding: 5px 10px; border-radius: 999px">Live app</span>
+          </div>
+          <div style="padding: 24px; display: flex; flex-direction: column; gap: 12px; flex: 1">
+            <h3 style="margin: 0; font-size: 22px; font-weight: 800; letter-spacing: -0.01em">Sydney Housing Price</h3>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #34435C">101 sales I collected by hand, three very different suburbs, and a price estimator that's within about 12% for a typical home.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px">
+              <span style="font-size: 12px; font-weight: 600; background: #FFF1C9; padding: 4px 10px; border-radius: 999px">scikit-learn</span>
+              <span style="font-size: 12px; font-weight: 600; background: #FFF1C9; padding: 4px 10px; border-radius: 999px">Random forest</span>
+              <span style="font-size: 12px; font-weight: 600; background: #FFF1C9; padding: 4px 10px; border-radius: 999px">Streamlit</span>
+            </div>
+            <span style="margin-top: auto; padding-top: 8px; font-size: 15px; font-weight: 700; color: #2F5FD0">Read More →</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" data-screen-label="Experience" style="padding: clamp(48px,7vw,88px) 0; display: flex; flex-direction: column; gap: 36px; align-items: center">
+      <div style="display: flex; flex-direction: column; gap: 14px; align-items: center; text-align: center">
+        <span style="font-family: 'Caveat', cursive; font-size: 26px; font-weight: 700; background: #CFDAB4; color: #223047; padding: 2px 16px; border-radius: 10px; border: 2px solid #223047; transform: rotate(-2deg)">Where I've worked</span>
+        <h2 style="margin: 0; font-size: clamp(34px,4.6vw,52px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05">Experience</h2>
+      </div>
+      <div style="width: 100%; max-width: 980px; display: flex; flex-direction: column; gap: 28px">
+        
+          <div style="background: #FFFDF8; border: 2px solid #223047; border-radius: 26px; box-shadow: 5px 5px 0 #223047; padding: clamp(20px,3vw,32px); display: flex; flex-direction: column; gap: 4px">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 6px">
+              <span style="font-size: 15px; font-weight: 800; background: #CFDAB4; border: 2px solid #223047; padding: 6px 16px; border-radius: 999px">Industry &amp; Placements</span>
+            </div>
+            
+              <div style="display: flex; flex-wrap: wrap; gap: 4px 28px; padding: 16px 0; border-bottom: 1.5px dashed rgba(34,48,71,0.18)">
+                <div style="flex: 0 0 180px; font-size: 14px; font-weight: 600; color: #2F5FD0; padding-top: 2px">09/2026 – Current</div>
+                <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 2px; min-width: 0">
+                  <div style="font-size: 16px; font-weight: 700">Coding Mentor (Work-Integrated Learning placement)</div>
+                  <div style="font-size: 14px; font-weight: 500; color: #5A6780">Digimaker</div>
+                  <div style="font-size: 15px; line-height: 1.6; color: #34435C; margin-top: 4px">Teach kids across Victoria to code, from Scratch to text-based languages and Raspberry Pi; backend development on the LMS.</div>
+                </div>
+              </div>
+            
+              <div style="display: flex; flex-wrap: wrap; gap: 4px 28px; padding: 16px 0; border-bottom: 1.5px dashed rgba(34,48,71,0.18)">
+                <div style="flex: 0 0 180px; font-size: 14px; font-weight: 600; color: #2F5FD0; padding-top: 2px">02/2024 – 04/2024</div>
+                <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 2px; min-width: 0">
+                  <div style="font-size: 16px; font-weight: 700">Programs &amp; Communications Consultant</div>
+                  <div style="font-size: 14px; font-weight: 500; color: #5A6780">Impact Hub Phnom Penh</div>
+                  <div style="font-size: 15px; line-height: 1.6; color: #34435C; margin-top: 4px">Supported five concurrent projects, including DakDam, Norea Island and Youth4Climate.</div>
+                </div>
+              </div>
+            
+              <div style="display: flex; flex-wrap: wrap; gap: 4px 28px; padding: 16px 0; border-bottom: 1.5px dashed rgba(34,48,71,0.18)">
+                <div style="flex: 0 0 180px; font-size: 14px; font-weight: 600; color: #2F5FD0; padding-top: 2px">12/2023 – 01/2024</div>
+                <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 2px; min-width: 0">
+                  <div style="font-size: 16px; font-weight: 700">Concert PR Intern</div>
+                  <div style="font-size: 14px; font-weight: 500; color: #5A6780">Union of Youth Federations of Cambodia</div>
+                  <div style="font-size: 15px; line-height: 1.6; color: #34435C; margin-top: 4px">Daily PR insight reports and stakeholder coordination for the UYFC 45th Anniversary Concert.</div>
+                </div>
+              </div>
+            
+              <div style="display: flex; flex-wrap: wrap; gap: 4px 28px; padding: 16px 0; border-bottom: 1.5px dashed rgba(34,48,71,0.18)">
+                <div style="flex: 0 0 180px; font-size: 14px; font-weight: 600; color: #2F5FD0; padding-top: 2px">03/2022 – 10/2022</div>
+                <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 2px; min-width: 0">
+                  <div style="font-size: 16px; font-weight: 700">Province Lead &amp; Consultant, Siem Reap</div>
+                  <div style="font-size: 14px; font-weight: 500; color: #5A6780">Impact Hub Phnom Penh</div>
+                  <div style="font-size: 15px; line-height: 1.6; color: #34435C; margin-top: 4px">Co-managed 22 volunteers delivering 25 workshops to around 600 participants.</div>
+                </div>
+              </div>
+            
+          </div>
+        
+          <div style="background: #FFFDF8; border: 2px solid #223047; border-radius: 26px; box-shadow: 5px 5px 0 #223047; padding: clamp(20px,3vw,32px); display: flex; flex-direction: column; gap: 4px">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 6px">
+              <span style="font-size: 15px; font-weight: 800; background: #FFCB47; border: 2px solid #223047; padding: 6px 16px; border-radius: 999px">Employment</span>
+            </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 4px 28px; padding: 16px 0; border-bottom: 1.5px dashed rgba(34,48,71,0.18)">
+                <div style="flex: 0 0 180px; font-size: 14px; font-weight: 600; color: #2F5FD0; padding-top: 2px">08/2027 – Current</div>
+                <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 2px; min-width: 0">
+                  <div style="font-size: 16px; font-weight: 700">Maths &amp; English Tutor</div>
+                  <div style="font-size: 14px; font-weight: 500; color: #5A6780">Education Space</div>
+                  <div style="font-size: 15px; line-height: 1.6; color: #34435C; margin-top: 4px">Tutor Year 1 to Year 9 students in maths and English.</div>
+                </div>
+              </div>
+            
+              <div style="display: flex; flex-wrap: wrap; gap: 4px 28px; padding: 16px 0; border-bottom: 1.5px dashed rgba(34,48,71,0.18)">
+                <div style="flex: 0 0 180px; font-size: 14px; font-weight: 600; color: #2F5FD0; padding-top: 2px">02/2026 – 11/2026</div>
+                <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 2px; min-width: 0">
+                  <div style="font-size: 16px; font-weight: 700">Career Ambassador</div>
+                  <div style="font-size: 14px; font-weight: 500; color: #5A6780">DeakinTALENT, Deakin University</div>
+                  <div style="font-size: 15px; line-height: 1.6; color: #34435C; margin-top: 4px">Ambassador of the Month, April 2026; invited to a panel talk with Deakin’s country managers.</div>
+                </div>
+              </div>
+            
+              <div style="display: flex; flex-wrap: wrap; gap: 4px 28px; padding: 16px 0; border-bottom: 1.5px dashed rgba(34,48,71,0.18)">
+                <div style="flex: 0 0 180px; font-size: 14px; font-weight: 600; color: #2F5FD0; padding-top: 2px">10/2024 – 10/2025</div>
+                <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 2px; min-width: 0">
+                  <div style="font-size: 16px; font-weight: 700">Student Learning Mentor → Senior Mentor</div>
+                  <div style="font-size: 14px; font-weight: 500; color: #5A6780">Deakin College</div>
+                  <div style="font-size: 15px; line-height: 1.6; color: #34435C; margin-top: 4px">Supported Diploma of IT students; represented the College at TEQSA Conference 2025.</div>
+                </div>
+              </div>
+            
+          </div>
+        
+          <div style="background: #FFFDF8; border: 2px solid #223047; border-radius: 26px; box-shadow: 5px 5px 0 #223047; padding: clamp(20px,3vw,32px); display: flex; flex-direction: column; gap: 4px">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 6px">
+              <span style="font-size: 15px; font-weight: 800; background: #F4A3AE; border: 2px solid #223047; padding: 6px 16px; border-radius: 999px">Leadership &amp; Volunteering</span>
+            </div>
+            
+              <div style="display: flex; flex-wrap: wrap; gap: 4px 28px; padding: 16px 0; border-bottom: 1.5px dashed rgba(34,48,71,0.18)">
+                <div style="flex: 0 0 180px; font-size: 14px; font-weight: 600; color: #2F5FD0; padding-top: 2px">07/2026 – 08/2026</div>
+                <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 2px; min-width: 0">
+                  <div style="font-size: 16px; font-weight: 700">STEM Mentor</div>
+                  <div style="font-size: 14px; font-weight: 500; color: #5A6780">In2Science</div>
+                  <div style="font-size: 15px; line-height: 1.6; color: #34435C; margin-top: 4px">Mentor Year 9 Maths students at Westall Secondary College.</div>
+                </div>
+              </div>
+              
+              <div style="display: flex; flex-wrap: wrap; gap: 4px 28px; padding: 16px 0; border-bottom: 1.5px dashed rgba(34,48,71,0.18)">
+                <div style="flex: 0 0 180px; font-size: 14px; font-weight: 600; color: #2F5FD0; padding-top: 2px">10/2025 – 10/2026</div>
+                <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 2px; min-width: 0">
+                  <div style="font-size: 16px; font-weight: 700">Vice President</div>
+                  <div style="font-size: 14px; font-weight: 500; color: #5A6780">Deakin Cambodian Club</div>
+                  <div style="font-size: 15px; line-height: 1.6; color: #34435C; margin-top: 4px">Run events and the committee, including a five-university Khmer New Year with 855+ attendees.</div>
+                </div>
+              </div>
+
+              <div style="display: flex; flex-wrap: wrap; gap: 4px 28px; padding: 16px 0; border-bottom: 1.5px dashed rgba(34,48,71,0.18)">
+                <div style="flex: 0 0 180px; font-size: 14px; font-weight: 600; color: #2F5FD0; padding-top: 2px">08/2021 – 10/2022</div>
+                <div style="flex: 1 1 320px; display: flex; flex-direction: column; gap: 2px; min-width: 0">
+                  <div style="font-size: 16px; font-weight: 700">Youth Workshop Facilitator</div>
+                  <div style="font-size: 14px; font-weight: 500; color: #5A6780">UNICEF Generation Future · UNDP · Movers Programme</div>
+                  <div style="font-size: 15px; line-height: 1.6; color: #34435C; margin-top: 4px">Facilitated youth workshops across Cambodia, including 26 Movers workshops for 842 participants.</div>
+                </div>
+              </div>
+
+          </div>
+        
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" data-screen-label="Contact" style="padding: clamp(48px,7vw,88px) 0 clamp(64px,8vw,104px)">
+      <div style="position: relative; background: #223047; border: 2px solid #223047; border-radius: 36px; box-shadow: 8px 8px 0 #2F5FD0; padding: clamp(40px,7vw,80px) clamp(22px,5vw,64px); display: flex; flex-wrap: wrap; align-items: center; gap: 32px; overflow: hidden">
+        <div style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 18px; align-items: flex-start; position: relative; z-index: 2">
+          <span style="font-family: 'Caveat', cursive; font-size: 30px; font-weight: 700; color: #FFCB47; transform: rotate(-3deg)">Get in touch</span>
+          <h2 style="margin: 0; font-size: clamp(34px,5vw,56px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; color: #FFFDF8; max-width: 16ch">Let’s turn data into impact.</h2>
+          <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #D9DFEA; max-width: 46ch">Open to roles, freelance work and volunteer projects, paid or unpaid. In Melbourne or remotely, anywhere.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px">
+            <span style="font-size: 13px; font-weight: 700; color: #223047; background: #FFCB47; padding: 6px 14px; border-radius: 999px">Internships &amp; grad roles</span>
+            <span style="font-size: 13px; font-weight: 700; color: #223047; background: #CFDAB4; padding: 6px 14px; border-radius: 999px">Freelance projects</span>
+            <span style="font-size: 13px; font-weight: 700; color: #223047; background: #F4A3AE; padding: 6px 14px; border-radius: 999px">Volunteer &amp; pro bono</span>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px">
+            <a href="mailto:chakriyathida@gmail.com" class="pop" style="background: #FFCB47; color: #223047; font-weight: 700; font-size: 15px; padding: 14px 28px; border-radius: 999px; border: 2px solid #FFFDF8; box-shadow: 4px 4px 0 #2F5FD0">Email me</a>
+            <a href="https://linkedin.com/in/thidaan" target="_blank" class="pop" style="background: transparent; color: #FFFDF8; font-weight: 700; font-size: 15px; padding: 14px 28px; border-radius: 999px; border: 2px solid #FFFDF8">LinkedIn</a>
+          </div>
+        </div>
+        <div style="flex: 0 1 300px; width: 100%; max-width: 300px; margin: 0 auto; position: relative; aspect-ratio: 1 / 1">
+          <div style="position: absolute; inset: 8%; border-radius: 50%; background: #F4A3AE; border: 2px solid #FFFDF8"></div>
+          <img src="images/contact-illustration.webp" alt="" class="wob" style="position: absolute; left: 0; bottom: 6%; width: 100%; height: auto">
+          <svg class="twinkle" aria-hidden="true" viewBox="0 0 24 24" style="position: absolute; right: 2%; top: 4%; width: 32px; height: 32px"><path d="M12 0 C13 8 16 11 24 12 C16 13 13 16 12 24 C11 16 8 13 0 12 C8 11 11 8 12 0Z" fill="#FFCB47"></path></svg>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer style="border-top: 2px solid #223047; background: #FFFDF8">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 24px clamp(16px,5vw,48px); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; color: #5A6780">
+      <div style="font-weight: 800; font-size: 18px; color: #223047">Thida An<span style="color: #2F5FD0">.</span></div>
+      <div>© 2026 Thida An · Melbourne, Victoria</div>
+    </div>
+  </footer>
+</div>
+
+<script>
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+</script>
+</body>
+</html>

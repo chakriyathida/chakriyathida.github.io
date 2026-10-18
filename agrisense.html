@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AgriSense Cambodia · Thida An</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="project.css">
+</head>
+<body style="--accent: #CFDAB4; --tint: #EEF2E3">
+
+<!-- HEADER -->
+<header>
+  <div class="wrap">
+    <a href="index.html" class="logo">Thida An<span>.</span></a>
+    <a href="index.html#projects" class="btn small">← All projects</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-card">
+      <div class="hero-text">
+        <span class="script">SIT223 Design thinking · Deakin</span>
+        <h1>AgriSense Cambodia</h1>
+        <p class="lead">A voice-first concept that turns farm sensor data into spoken advice in Khmer, for farmers who can't use a dashboard.</p>
+        <div class="tags">
+          <span class="tag">IoT</span>
+          <span class="tag">Design thinking</span>
+          <span class="tag">React prototype</span>
+          <span class="tag">Khmer + English</span>
+        </div>
+        <div class="buttons">
+          <a href="#prototype" class="btn primary">See the prototype ↓</a>
+          <a href="https://github.com/DataBytes-Organisation/Intelligent-IoT-Data-Management" target="_blank" class="btn">The project it builds on</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="images/agrisense.webp" alt="AgriSense prototype: a soil sensor alert in Khmer and English">
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY NUMBERS -->
+  <div class="stats">
+    <div class="stat"><div class="num">3</div><div class="label">new layers on an existing IoT system</div></div>
+    <div class="stat"><div class="num">5</div><div class="label">prototype screens</div></div>
+    <div class="stat"><div class="num">2</div><div class="label">languages, Khmer first</div></div>
+  </div>
+
+  <!-- 1. THE PROBLEM -->
+  <section class="block">
+    <div class="block-head">
+      <span class="step">01</span>
+      <h2>The problem</h2>
+    </div>
+    <div class="block-body">
+      <p>Farm sensors can tell you when soil is too dry. But most IoT dashboards show graphs in English and assume you can read data.</p>
+      <ul class="points">
+        <li>Many smallholder farmers in rural Cambodia can't use that kind of dashboard.</li>
+        <li>Numbers alone don't tell a farmer what to do next.</li>
+        <li>Farmers often sell through middlemen, with no direct way to reach buyers.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 2. WHERE THE IDEA CAME FROM -->
+  <section class="block">
+    <div class="block-head">
+      <span class="step">02</span>
+      <h2>Where the idea came from</h2>
+    </div>
+    <div class="block-body">
+      <p>In 2022 I supported an agriculture hackathon program at Impact Hub Phnom Penh and saw these gaps up close.</p>
+      <p>For this unit, I extended <strong>DataBytes' Intelligent IoT Data Management</strong> project at Deakin, which already detects unusual sensor readings. My question: how would a farmer who can't read a graph actually use it?</p>
+    </div>
+  </section>
+
+  <!-- 3. THE IDEA -->
+  <section class="block">
+    <div class="block-head">
+      <span class="step">03</span>
+      <h2>The idea</h2>
+    </div>
+    <div class="block-body">
+      <ul class="points">
+        <li><strong>Simple dashboard:</strong> icons and colours in Khmer instead of graphs.</li>
+        <li><strong>Voice advisor:</strong> the farmer asks a question out loud in Khmer and gets clear advice back.</li>
+        <li><strong>Marketplace:</strong> list a crop and connect directly with verified buyers.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 4. THE PROTOTYPE -->
+  <section class="block wide" id="prototype">
+    <div class="block-head">
+      <span class="step">04</span>
+      <h2>The prototype</h2>
+    </div>
+    <div class="block-body">
+      <p>Five screens, built as a clickable React prototype. Every label is in Khmer first, with English underneath.</p>
+      <!-- Phone screenshots: add or swap images in images/projects/ -->
+      <div class="phones">
+        <figure>
+          <img src="images/projects/agrisense-home.webp" alt="Home screen with soil, temperature, light and rain tiles">
+          <figcaption><strong>Home:</strong> field status at a glance</figcaption>
+        </figure>
+        <figure>
+          <img src="images/projects/agrisense-sensor.webp" alt="Soil sensor alert showing 18% moisture and advice to irrigate">
+          <figcaption><strong>Sensor alert:</strong> what's wrong and what to do</figcaption>
+        </figure>
+        <figure>
+          <img src="images/projects/agrisense-advisor.webp" alt="AI advisor chat in Khmer and English with a microphone button">
+          <figcaption><strong>AI advisor:</strong> ask out loud, hear the answer</figcaption>
+        </figure>
+        <figure>
+          <img src="images/projects/agrisense-sell.webp" alt="Sell crops screen with crop, quantity, price and total estimate">
+          <figcaption><strong>Sell crops:</strong> set quantity and price</figcaption>
+        </figure>
+        <figure>
+          <img src="images/projects/agrisense-buyers.webp" alt="Buyers screen listing four verified offers for 120 kg of rice">
+          <figcaption><strong>Buyers:</strong> compare verified offers</figcaption>
+        </figure>
+      </div>
+      <div class="note"><b>Honest note:</b> I generated the prototype with Lovable (an AI tool), then moved it into my fork of the DataBytes repo with Vite. It's a concept, not a tested product. I haven't put it in front of farmers yet.</div>
+    </div>
+  </section>
+
+  <!-- 5. DESIGN THINKING PROCESS -->
+  <section class="block">
+    <div class="block-head">
+      <span class="step">05</span>
+      <h2>How I planned it</h2>
+    </div>
+    <div class="block-body">
+      <ul class="points">
+        <li>A <strong>Lean Canvas</strong> covering problem, users, solution and key metrics</li>
+        <li>A <strong>Trello</strong> product plan with user stories and sprints</li>
+        <li>A <strong>pitch video</strong> and a design thinking reflection</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 6. WHAT'S NEXT -->
+  <section class="block">
+    <div class="block-head">
+      <span class="step">06</span>
+      <h2>What I'd do next</h2>
+    </div>
+    <div class="block-body">
+      <ul class="points">
+        <li>Test the voice advice with real farmers before building anything else.</li>
+        <li>Connect the screens to live sensor data from the DataBytes system.</li>
+        <li>Work with a UX designer. An AI tool got me started, but it isn't a substitute for good design.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- NEXT PROJECT -->
+  <a href="sea-scam.html" class="next">
+    <div>
+      <span class="script">Next project</span>
+      <h3>SEA Scam Research Study</h3>
+    </div>
+    <span class="btn primary">Read more →</span>
+  </a>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="index.html">← Back to portfolio</a>
+    <span>© 2026 Thida An · Melbourne, Victoria</span>
+  </div>
+</footer>
+
+</body>
+</html>
