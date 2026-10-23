@@ -119,6 +119,7 @@ figure .frame {
 figure .frame img { width: 100%; height: auto; }
 figcaption { font-size: 14px; color: var(--muted); margin-top: 12px; line-height: 1.5; }
 .fig-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 22px; }
+.fig-row.two { grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap: 28px; }
 
 /* Phone screenshots (AgriSense) */
 section.block.wide .block-head,

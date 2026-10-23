@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bridgework · Thida An</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="project.css">
+</head>
+<body style="--accent: #BFD2FF; --tint: #E8EFFF">
+
+<!-- HEADER -->
+<header>
+  <div class="wrap">
+    <a href="index.html" class="logo">Thida An<span>.</span></a>
+    <a href="index.html#projects" class="btn small">← All projects</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-card">
+      <div class="hero-text">
+        <span class="script">Melbourne Hack 2026 · Finalist</span>
+        <h1>Bridgework</h1>
+        <p class="lead">Pick the topic you have homework on. Bridgework drops you into a real job that uses it, marks you like a supervisor, and shows you the career behind it.</p>
+        <div class="tags">
+          <span class="tag">Next.js + React</span>
+          <span class="tag">EdTech</span>
+          <span class="tag">SDG 4</span>
+          <span class="tag">Solo build</span>
+        </div>
+        <div class="buttons">
+          <a href="#how" class="btn primary">See how it works ↓</a>
+          <a href="https://github.com/chakriyathida/bridgework" target="_blank" class="btn">Code on GitHub</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="images/bridgework.webp" alt="Bridgework home page: the ratio question in your homework decides whether 300 people drink safe water">
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY NUMBERS -->
+  <div class="stats">
+    <div class="stat"><div class="num">13</div><div class="label">job simulations, Grade 7 to 12</div></div>
+    <div class="stat"><div class="num">19 of 20</div><div class="label">careers need no degree</div></div>
+    <div class="stat"><div class="num">0</div><div class="label">servers or AI calls to mark an answer</div></div>
+  </div>
+
+  <!-- 1. THE PROBLEM -->
+  <section class="block">
+    <div class="block-head">
+      <span class="step">01</span>
+      <h2>The problem</h2>
+    </div>
+    <div class="block-body">
+      <p>In many classrooms, school is copy, memorise, pass. Nobody shows students what any of it is for.</p>
+      <ul class="points">
+        <li>Many leave before 18, before anyone asks what they want to do.</li>
+        <li>The jobs they can name stop at doctor and teacher.</li>
+        <li>Changing a national curriculum takes a ministry and a decade.</li>
+      </ul>
+      <p>I grew up in a province in Cambodia, not Phnom Penh. My siblings are in high school now. I built what I wish I'd had at fifteen. Friends from India described the same classroom, so Cambodia is my worked example, not the only case.</p>
+    </div>
+  </section>
+
+  <!-- 2. THE IDEA -->
+  <section class="block">
+    <div class="block-head">
+      <span class="step">02</span>
+      <h2>The idea</h2>
+    </div>
+    <div class="block-body">
+      <p>Bridgework runs <strong>alongside</strong> the syllabus a school already teaches, so nothing needs approval for a student to use it tomorrow.</p>
+      <ul class="points">
+        <li><strong>Students</strong> pick their grade, subject and topic, then do a short job task built on exactly that topic.</li>
+        <li><strong>Practitioners and uni students</strong> publish simulations from their own jobs, tagged to the school topic they use.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3. HOW IT WORKS -->
+  <section class="block wide" id="how">
+    <div class="block-head">
+      <span class="step">03</span>
+      <h2>How it works</h2>
+    </div>
+    <div class="block-body">
+      <div class="fig-row two">
+        <figure>
+          <div class="frame"><img src="images/projects/bridgework-picker.webp" alt="Topic picker: Grade 9, Mathematics, then Pythagoras, Ratio and proportion or Trigonometry"></div>
+          <figcaption><strong>1. Pick your topic.</strong> Grade, subject, then the topic from tonight's homework.</figcaption>
+        </figure>
+        <figure>
+          <div class="frame"><img src="images/projects/bridgework-sim.webp" alt="Water quality simulation: a brief with this morning's tank readings and a decision with four options"></div>
+          <figcaption><strong>2. Do the work.</strong> A real brief, real numbers, and three decisions a practitioner actually makes.</figcaption>
+        </figure>
+        <figure>
+          <div class="frame"><img src="images/projects/bridgework-marking.webp" alt="Marking screen: out by a factor of ten, that's a unit conversion, with the practitioner's worked answer"></div>
+          <figcaption><strong>3. Get marked like a supervisor.</strong> A wrong answer gets a reason, not just a red cross.</figcaption>
+        </figure>
+        <figure>
+          <div class="frame"><img src="images/projects/bridgework-unlock.webp" alt="Career unlocked: Water Quality Technician, no degree required"></div>
+          <figcaption><strong>4. Unlock the career.</strong> What the day looks like, the pathway in, the pay, and whether it needs a degree.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. HOW I BUILT IT -->
+  <section class="block">
+    <div class="block-head">
+      <span class="step">04</span>
+      <h2>How I built it</h2>
+    </div>
+    <div class="block-body">
+      <ul class="points">
+        <li><strong>Next.js 15 + React 19</strong> on Vercel, with one hand-written stylesheet and light and dark themes.</li>
+        <li><strong>No backend.</strong> Content is seeded data; progress lives in the browser.</li>
+        <li><strong>Marking runs on the device.</strong> It spots the common slips, like a factor-of-ten error, and calls it a unit conversion problem. A student on a shared phone with weak signal gets the same feedback as anyone.</li>
+        <li><strong>Instructor side:</strong> a published simulation appears under its school topic straight away.</li>
+      </ul>
+      <figure>
+        <div class="frame"><img src="images/projects/bridgework-instructor.webp" alt="Instructor page: publish what your job actually involves, with a form for the job and the curriculum link"></div>
+        <figcaption>The instructor form. The curriculum link is what makes a simulation findable.</figcaption>
+      </figure>
+      <div class="note"><b>Honest note:</b> I built it solo inside the hackathon window with Claude (an AI tool) helping with code and content, and said so on Devpost and in the README. It's a prototype: pay figures are indicative and published simulations stay in one browser.</div>
+    </div>
+  </section>
+
+  <!-- 5. RESULT -->
+  <section class="block">
+    <div class="block-head">
+      <span class="step">05</span>
+      <h2>Result</h2>
+    </div>
+    <div class="block-body">
+      <p>Bridgework reached the <strong>finals</strong> of Melbourne Hack 2026 (Accessible Education track). I pitched it at the closing ceremony: 8 minutes with a live demo, then Q&amp;A.</p>
+    </div>
+  </section>
+
+  <!-- 6. WHAT'S NEXT -->
+  <section class="block">
+    <div class="block-head">
+      <span class="step">06</span>
+      <h2>What's next</h2>
+    </div>
+    <div class="block-body">
+      <ul class="points">
+        <li>Khmer throughout, and fully offline.</li>
+        <li>A real backend with a moderation queue, so contributed simulations are checked before students see them.</li>
+        <li>Mapping simulations to the Australian Year 8 and 9 maths curriculum.</li>
+        <li>A school pilot, and teammates who care about the problem.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- NEXT PROJECT -->
+  <a href="agrisense.html" class="next">
+    <div>
+      <span class="script">Next project</span>
+      <h3>AgriSense Cambodia</h3>
+    </div>
+    <span class="btn primary">Read more →</span>
+  </a>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="index.html">← Back to portfolio</a>
+    <span>© 2026 Thida An · Melbourne, Victoria</span>
+  </div>
+</footer>
+
+</body>
+</html>
